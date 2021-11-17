@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<title>Project JSF</title>
+</h:head>
+<h:body>
+
+	<h2>
+		<h:outputText value="Lista Empleados"></h:outputText>
+	</h2>
+	<h:form style="border-style: none;">
+		<h:commandButton action="#{empleadoBean.nuevo()}"
+			value="Nuevo Empleado"></h:commandButton>
+
+		<h:dataTable value="#{empleadoBean.obtenerEmpleados()}"
+			var="empleado" border="1" >
+			<h:column>
+				<f:facet name="header">Tipo identificacion</f:facet>
+				<h:outputText value="#{empleado.documento_tipo}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Numero</f:facet>
+				<h:outputText value="#{empleado.documento_numero}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Nombres</f:facet>
+				<h:outputText value="#{empleado.nombres}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Apellidos</f:facet>
+				<h:outputText value="#{empleado.apellidos}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Direccion</f:facet>
+				<h:outputText value="#{empleado.direccion}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Email</f:facet>
+				<h:outputText value="#{empleado.correo_electronico}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Telefono</f:facet>
+				<h:outputText value="#{empleado.telefono}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Ciudad</f:facet>
+				<h:outputText value="#{empleado.ciudad}"></h:outputText>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">F.Modifica</f:facet>
+				<h:outputText value="#{empleado.fecha_hora_modifica}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Editar</f:facet>
+				<h:commandButton action="#{empleadoBean.editar(empleado.id)}"
+					value="Editar"></h:commandButton>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Eliminar</f:facet>
+				<h:commandButton action="#{empleadoBean.eliminar(empleado.id)}"
+					value="Eliminar"></h:commandButton>
+			</h:column>
+		</h:dataTable>
+	</h:form>
+
+</h:body>
+</html>
